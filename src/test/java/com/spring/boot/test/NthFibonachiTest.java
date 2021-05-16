@@ -1,6 +1,5 @@
 package com.spring.boot.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class NthFibonachiTest {
@@ -14,7 +13,7 @@ public class NthFibonachiTest {
     }
 
     private int getFibonachi(int nth) {
-        if(nth <= 1) {
+        if (nth <= 1) {
             return nth;
         }
 
