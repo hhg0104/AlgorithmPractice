@@ -61,7 +61,6 @@ public class CasherProgrammingTest {
         }
     }
 
-
     @Test
     public void cashierProgram() {
         String changeMoney = calculateChangeMoney("15.94;16.00");
@@ -71,7 +70,7 @@ public class CasherProgrammingTest {
     public String calculateChangeMoney(String priceAndMoney) {
 
         String[] binaryNums = priceAndMoney.split(";");
-        if(binaryNums.length != 2) {
+        if (binaryNums.length != 2) {
             throw new IllegalArgumentException("'priceAndMoney' must be contained 2 floats string separated by semicolon. (ex. 15.94;16.00)");
         }
 
@@ -87,14 +86,14 @@ public class CasherProgrammingTest {
         BigDecimal change = BigDecimal.valueOf(customerMoney).subtract(BigDecimal.valueOf(totalPrice));
 
         List<Money> changes = new ArrayList<>();
-        if(change.compareTo(BigDecimal.ZERO) == 0) {
+        if (change.compareTo(BigDecimal.ZERO) == 0) {
             return "ZERO";
         }
 
         Money[] moneyEnums = Money.values();
         for (int i = moneyEnums.length - 1; i >= 0; i--) {
 
-            if(change.compareTo(BigDecimal.ZERO) == 0) {
+            if (change.compareTo(BigDecimal.ZERO) == 0) {
                 break;
             }
 

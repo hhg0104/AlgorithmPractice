@@ -3,9 +3,7 @@ package com.spring.boot.test;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DynamicProgrammingOnTree {
 
@@ -54,7 +52,7 @@ public class DynamicProgrammingOnTree {
         v[14].add(7);
 
         // values of node 1, 2, 3....14
-        int a[] = { 3, 2, 1, 10, 1, 3, 9, 1, 5, 3, 4, 5, 9, 8 };
+        int a[] = {3, 2, 1, 10, 1, 3, 9, 1, 5, 3, 4, 5, 9, 8};
 
         // function call
         System.out.println(maximumValue(a, v));
@@ -77,12 +75,11 @@ public class DynamicProgrammingOnTree {
         int maximum = 0;
 
         // traverse the tree
-        for (int child : v[u])
-        {
+        for (int child : v[u]) {
 
             // if child is parent, then we continue
             // without recursing further
-            if (child == parent){
+            if (child == parent) {
                 continue;
             }
 

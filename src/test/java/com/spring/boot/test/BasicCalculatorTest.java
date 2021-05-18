@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 
 public class BasicCalculatorTest {
 
-
     @Test
     public void test() {
 
@@ -37,12 +36,12 @@ public class BasicCalculatorTest {
 
                 if (operation == '+' || operation == '-') {
                     result += lastNum;
-                    lastNum = (operation == '+')? currentNum : -currentNum;
+                    lastNum = (operation == '+') ? currentNum : -currentNum;
 
-                } else if(operation == '*') {
+                } else if (operation == '*') {
                     lastNum = lastNum * currentNum;
 
-                } else if(operation == '/') {
+                } else if (operation == '/') {
                     lastNum = lastNum / currentNum;
                 }
 

@@ -1,10 +1,7 @@
 package com.spring.boot.test;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -38,7 +35,7 @@ public class LevelOrderBinaryTreeTraversalTest {
         Queue<Node> queue = new LinkedList<>();
         queue.add(root);
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
 
             Node node = queue.poll();
             System.out.print(node.data + " ");

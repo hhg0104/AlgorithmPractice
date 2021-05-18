@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 
 public class NthFibonachiTest {
 
-
     @Test
     public void test() {
 
@@ -19,7 +18,6 @@ public class NthFibonachiTest {
 
         return getFibonachi(nth - 1) + getFibonachi(nth - 2);
     }
-
 
     private int getFibonachiUsingDynamicProgramming(int nth) {
 

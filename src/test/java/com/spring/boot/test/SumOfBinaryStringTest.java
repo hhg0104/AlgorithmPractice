@@ -3,11 +3,7 @@ package com.spring.boot.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class SumOfBinaryStringTest {
-
 
     @Test
     public void sumOfBinaryNums() {

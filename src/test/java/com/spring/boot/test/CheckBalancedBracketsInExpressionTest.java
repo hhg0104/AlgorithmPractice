@@ -8,7 +8,6 @@ import java.util.Deque;
 
 public class CheckBalancedBracketsInExpressionTest {
 
-
     @Test
     public void test() {
 
