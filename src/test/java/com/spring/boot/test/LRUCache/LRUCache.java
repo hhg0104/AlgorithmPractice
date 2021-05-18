@@ -117,9 +117,7 @@ public class LRUCache {
             deleteLastNode();
         }
 
-        CacheNode oldHead = this.head;
-        oldHead.prev = newCache;
-        newCache.next = oldHead;
+        this.head.prev = newCache;
         this.head = newCache;
 
         cacheMap.put(id, newCache);
@@ -155,12 +153,12 @@ public class LRUCache {
         }
 
         CacheNode oldHead = this.head;
-        if (oldHead.next == null) {
+
+        if (this.head.next == null) {
             this.head = null;
 
         } else {
-            this.head = oldHead.next;
-            oldHead.next = null;
+            this.head = this.head.next;
         }
 
         cacheMap.remove(oldHead.id);
@@ -175,13 +173,12 @@ public class LRUCache {
 
         CacheNode oldTail = this.tail;
 
-        if (oldTail.prev == null) {
+        if (this.tail.prev == null) {
             this.tail = null;
 
         } else {
-            this.tail = oldTail.prev;
+            this.tail = this.tail.prev;
             this.tail.next = null;
-            oldTail.prev = null;
         }
 
         cacheMap.remove(oldTail.id);
@@ -190,13 +187,23 @@ public class LRUCache {
 
     private void deleteMiddleNode(CacheNode cacheNode) {
 
-        CacheNode prevNode = cacheNode.prev;
-        CacheNode nextNode = cacheNode.next;
+        if (cacheNode == null) {
+            return;
+        }
 
-        prevNode.next = nextNode;
-        nextNode.prev = prevNode;
+        if (cacheNode == this.head) {
+            deleteFirstNode();
+
+        } else if (cacheNode == this.tail) {
+            deleteLastNode();
+
+        } else {
+            cacheNode.prev.next = cacheNode.next;
+            cacheNode.next.prev = cacheNode.prev;
+        }
 
         cacheMap.remove(cacheNode.id);
+
         size--;
     }
 
