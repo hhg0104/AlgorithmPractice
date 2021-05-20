@@ -1,5 +1,6 @@
 package com.spring.boot.test;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class NthFibonachiTest {
@@ -7,8 +8,8 @@ public class NthFibonachiTest {
     @Test
     public void test() {
 
-        int result = getFibonachiUsingDynamicProgramming(9);
-        System.out.println(result);
+        int actual = getFibonachiUsingDynamicProgramming(9);
+        Assertions.assertEquals(34, actual);
     }
 
     private int getFibonachi(int nth) {
