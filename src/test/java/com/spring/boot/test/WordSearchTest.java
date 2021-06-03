@@ -37,25 +37,65 @@ public class WordSearchTest {
     @Test
     public void test() {
 
-        char[][] board1 = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        char[][] board1 = {
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}
+        };
         boolean actual1 = isWordExists(board1, "ABCCED");
         Assertions.assertTrue(actual1);
 
-        char[][] board2 = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        char[][] board2 = {
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}
+        };
         boolean actual2 = isWordExists(board2, "SEE");
         Assertions.assertTrue(actual2);
 
-        char[][] board3 = {{'A', 'B', 'C', 'E'}, {'S', 'F', 'C', 'S'}, {'A', 'D', 'E', 'E'}};
+        char[][] board3 = {
+                {'A', 'B', 'C', 'E'},
+                {'S', 'F', 'C', 'S'},
+                {'A', 'D', 'E', 'E'}
+        };
         boolean actual3 = isWordExists(board3, "ABCB");
         Assertions.assertFalse(actual3);
 
-        char[][] board4 = {{'C', 'A', 'A'}, {'A', 'A', 'A'}, {'B', 'C', 'D'}};
+        char[][] board4 = {
+                {'C', 'A', 'A'},
+                {'A', 'A', 'A'},
+                {'B', 'C', 'D'}
+        };
         boolean actual4 = isWordExists(board4, "AAB");
         Assertions.assertTrue(actual4);
 
-        char[][] board5 = {{'A', 'B', 'C'}, {'D', 'E', 'F'}, {'G', 'H', 'I'}};
+        char[][] board5 = {
+                {'A', 'B', 'C'},
+                {'D', 'E', 'F'},
+                {'G', 'H', 'I'}
+        };
         boolean actual5 = isWordExists(board5, "ABA");
         Assertions.assertFalse(actual5);
+
+        char[][] board6 = {
+                {'A','B','C','E'},
+                {'S','F','E','S'},
+                {'A','D','E','E'}
+        };
+        boolean actual6 = isWordExists(board6, "ABCEFSADEESE");
+        Assertions.assertTrue(actual6);
+
+        char[][] board7 = {
+                {'A','B','C','E'},
+                {'S','F','C','S'},
+                {'A','D','E','E'}
+        };
+        boolean actual7 = isWordExists(board7, "ABCCED");
+        Assertions.assertTrue(actual7);
+        boolean actual8 = isWordExists(board7, "SEE");
+        Assertions.assertTrue(actual8);
+        boolean actual9 = isWordExists(board7, "ABCB");
+        Assertions.assertFalse(actual9);
     }
 
     private boolean isWordExists(char[][] board, String word) {
@@ -68,8 +108,8 @@ public class WordSearchTest {
             char[] row = board[i];
             for (int j = 0; j < row.length; j++) {
                 if (board[i][j] == word.charAt(0)) {
-                    char[][] path = new char[board.length][board[0].length];
-                    if (dfs(board, word, i, j, 0, path)) {
+                     boolean[][] visited = new boolean[board.length][board[0].length];
+                    if (dfs(board, word, i, j, 0, visited)) {
                         return true;
                     }
                 }
@@ -79,48 +119,36 @@ public class WordSearchTest {
         return false;
     }
 
-    private boolean dfs(char[][] board, String word, int boardIdx, int rowIdx, int wordIdx, char[][] path) {
-
-        System.out.println("boardIdx: " + boardIdx + ", rowIdx: " + rowIdx + ", wordIdx: " + wordIdx);
+    private boolean dfs(char[][] board, String word, int boardIdx, int rowIdx, int wordIdx, boolean[][] visited) {
 
         if (wordIdx > word.length() - 1) {
             System.out.println("Completed.");
             return true;
         }
 
+        System.out.println("boardIdx: " + boardIdx + ", rowIdx: " + rowIdx + ", word: " + word.charAt(wordIdx) + ", wordIdx: " + wordIdx);
+
         if (boardIdx < 0 || rowIdx < 0 ||
                 boardIdx >= board.length || rowIdx >= board[0].length ||
-                word.charAt(wordIdx) != board[boardIdx][rowIdx] || path[boardIdx][rowIdx] != '\u0000') {
+                word.charAt(wordIdx) != board[boardIdx][rowIdx] || visited[boardIdx][rowIdx]) {
             System.out.println("Failed.");
             return false;
 
         } else {
-            path[boardIdx][rowIdx] = board[boardIdx][rowIdx];
+            System.out.println("Passed.");
+            visited[boardIdx][rowIdx] = true;
         }
 
-        if (dfs(board, word, boardIdx - 1, rowIdx, wordIdx + 1, path) ||
-                dfs(board, word, boardIdx, rowIdx + 1, wordIdx + 1, path) ||
-                dfs(board, word, boardIdx + 1, rowIdx, wordIdx + 1, path) ||
-                dfs(board, word, boardIdx, rowIdx - 1, wordIdx + 1, path)) {
+        if (dfs(board, word, boardIdx - 1, rowIdx, wordIdx + 1, visited) ||
+                dfs(board, word, boardIdx, rowIdx + 1, wordIdx + 1, visited) ||
+                dfs(board, word, boardIdx + 1, rowIdx, wordIdx + 1, visited) ||
+                dfs(board, word, boardIdx, rowIdx - 1, wordIdx + 1, visited)) {
 
             return true;
         }
 
+        visited[boardIdx][rowIdx] = false;
+
         return false;
-    }
-
-    private char[][] copyArray(char[][] array) {
-
-        char[][] copiedArray = new char[array.length][array[0].length];
-
-        for (int i = 0; i < array.length; i++) {
-            char[] row = array[i];
-            for (int j = 0; j < row.length; j++) {
-                char ch = array[i][j];
-                copiedArray[i][j] = ch;
-            }
-        }
-
-        return copiedArray;
     }
 }
