@@ -41,7 +41,7 @@ public class MirrorTreeTest {
 
     private void mirror(Node node) {
 
-        if (node == null || node.left == null && node.right == null) {
+        if (node == null) {
             return;
         }
 
