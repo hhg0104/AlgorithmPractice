@@ -8,8 +8,11 @@ public class NthFibonachiTest {
     @Test
     public void test() {
 
-        int actual = getFibonachiUsingDynamicProgramming(9);
-        Assertions.assertEquals(34, actual);
+        int actual1 = getFibonachiUsingDynamicProgramming(9);
+        Assertions.assertEquals(34, actual1);
+
+        int actual2 = getFibonachiUsingDynamicProgramming(3);
+        Assertions.assertEquals(2, actual2);
     }
 
     private int getFibonachi(int nth) {
@@ -24,6 +27,7 @@ public class NthFibonachiTest {
 
         int num1 = 0;
         int num2 = 1;
+
         int num3 = 0;
 
         for (int i = 2; i <= nth; i++) {
