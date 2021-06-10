@@ -56,42 +56,4 @@ public class LongestCommonPrefixTest {
 
         return strs[0];
     }
-
-
-    public String longestCommonPrefix2(String[] strs) {
-
-        String commonPrefix = "";
-        int idx = 0;
-        while (true) {
-            char previousCh = ' ';
-            boolean isMatched = true;
-            for (String str : strs) {
-                if (idx > str.length() - 1) {
-                    isMatched = false;
-                    break;
-                }
-
-                char ch = str.charAt(idx);
-                if (previousCh == ' ') {
-                    previousCh = ch;
-                    continue;
-                }
-
-                if (previousCh != ch) {
-                    isMatched = false;
-                    break;
-                }
-            }
-
-            if (isMatched) {
-                commonPrefix += previousCh;
-            } else {
-                break;
-            }
-
-            idx++;
-        }
-
-        return commonPrefix;
-    }
 }
