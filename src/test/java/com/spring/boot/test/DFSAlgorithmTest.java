@@ -2,7 +2,6 @@ package com.spring.boot.test;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
@@ -11,7 +10,7 @@ public class DFSAlgorithmTest {
     @Test
     public void test() {
 
-        Graph2 g = new Graph2(4);
+        Graph g = new Graph(4);
 
         g.addEdge(0, 1);
         g.addEdge(0, 2);
@@ -23,13 +22,13 @@ public class DFSAlgorithmTest {
         g.dfs(2);
     }
 
-    class Graph2 {
+    class Graph {
 
         private int vertices;
 
         private LinkedList<Integer>[] adjs;
 
-        Graph2(int vertices) {
+        Graph(int vertices) {
             this.vertices = vertices;
             adjs = new LinkedList[vertices];
             for (int i = 0; i < vertices; i++) {
