@@ -71,4 +71,32 @@ public class MissingNumberInSortedArrayTest {
 
         return resultList;
     }
+
+    private List<Integer> findMissingNumber2(int[] arr) {
+
+        List<Integer> resultList = new ArrayList<>();
+
+        // Initialize diff
+        int diff = arr[0] - 0;
+
+        for(int i = 0; i < arr.length; i++)
+        {
+
+            // Check if diff and arr[i]-i
+            // both are equal or not
+            if (arr[i] - i != diff)
+            {
+
+                // Loop for consecutive
+                // missing elements
+                while (diff < arr[i] - i)
+                {
+                    resultList.add(i + diff);
+                    System.out.print((i + diff) + " ");
+                    diff++;
+                }
+            }
+        }
+        return resultList;
+    }
 }
