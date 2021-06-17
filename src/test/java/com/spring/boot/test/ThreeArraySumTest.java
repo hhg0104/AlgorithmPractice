@@ -55,8 +55,10 @@ public class ThreeArraySumTest {
         Assertions.assertEquals(0, actual3.size());
     }
 
+    // O(n^2)
     public List<List<Integer>> threeSum(int[] nums) {
 
+        // {-4, -1, -1, 0, 1, 2}
         Arrays.sort(nums);
 
         List<List<Integer>> resultList = new ArrayList<>();
