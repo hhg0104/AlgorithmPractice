@@ -52,4 +52,19 @@ public class MirrorTreeTest {
         mirror(node.left);
         mirror(node.right);
     }
+
+    private Node mirror2(Node node) {
+        if (node == null)
+            return node;
+
+        /* do the subtrees */
+        Node left = mirror2(node.left);
+        Node right = mirror2(node.right);
+
+        /* swap the left and right pointers */
+        node.left = right;
+        node.right = left;
+
+        return node;
+    }
 }
