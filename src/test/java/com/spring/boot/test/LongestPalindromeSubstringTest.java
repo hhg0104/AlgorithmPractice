@@ -35,25 +35,26 @@ import org.junit.jupiter.api.Test;
     time complexity: O(n2)
     space complexity: O(n2)
  */
-public class LongestCommonSubstringTest {
+public class LongestPalindromeSubstringTest {
 
     @Test
     public void test() {
 
-        String actual1 = longestPalindromeSelf("babad");
+        String actual1 = longestPalindrome("babad");
         Assertions.assertEquals("bab", actual1);
 
-        String actual2 = longestPalindromeSelf("cbbd");
+        String actual2 = longestPalindrome("cbbd");
         Assertions.assertEquals("bb", actual2);
 
-        String actual3 = longestPalindromeSelf("a");
+        String actual3 = longestPalindrome("a");
         Assertions.assertEquals("a", actual3);
 
-        String actual4 = longestPalindromeSelf("ac");
+        String actual4 = longestPalindrome("ac");
         Assertions.assertEquals("a", actual4);
     }
 
-    private String longestPalindromeSelf(String str) {
+    // O(n^2)
+    private String longestPalindrome(String str) {
 
         if (str == null || str.isEmpty() || str.length() > 1000) {
             return null;
@@ -87,7 +88,7 @@ public class LongestCommonSubstringTest {
         return end - start - 1;
     }
 
-    private String longestPalindrome(String s) {
+    private String longestPalindrome2(String s) {
 
         if (s == null || s.length() < 1) {
             return "";
