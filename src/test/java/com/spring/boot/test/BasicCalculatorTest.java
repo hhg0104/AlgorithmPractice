@@ -3,14 +3,67 @@ package com.spring.boot.test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Stack;
+
 public class BasicCalculatorTest {
 
     @Test
     public void test() {
 
-        int result = calculate2("321-3*5+12-11");
+        int result1 = calculateWithStack("321-3*5+12-11");
+        Assertions.assertEquals(307, result1);
 
-        Assertions.assertEquals(307, result);
+        int result2 = calculateWithStack("-11 + 3 + 4 - 5");
+        Assertions.assertEquals(-9, result2);
+
+        int result3 = calculateWithStack("3+2*2");
+        Assertions.assertEquals(7, result3);
+    }
+
+    private int calculateWithStack(String str) {
+
+        int currentNum = 0;
+        char operand = '+';
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < str.length(); i++) {
+
+            char ch = str.charAt(i);
+            if(Character.isDigit(ch)) {
+                currentNum = currentNum * 10 + (ch - '0');
+
+            } else if(!Character.isWhitespace(ch)) {
+                expr(stack, currentNum, operand);
+
+                operand = ch;
+                currentNum = 0;
+            }
+        }
+
+        if (currentNum != 0) {
+            expr(stack, currentNum, operand);
+        }
+
+        int result = 0;
+        while(!stack.isEmpty()) {
+            result += stack.pop();
+        }
+
+        return result;
+    }
+
+    private void expr(Stack<Integer> stack, int currentNum, char operand) {
+        if (operand == '+' || operand == '-') {
+            currentNum = (operand == '+')? currentNum : -currentNum;
+            stack.push(currentNum);
+
+        } else if (operand == '*') {
+            int lastNum = stack.pop();
+            stack.push(lastNum * currentNum);
+
+        } else if (operand == '/') {
+            int lastNum = stack.pop();
+            stack.push(lastNum / currentNum);
+        }
     }
 
     private int calculate2(String str) {
