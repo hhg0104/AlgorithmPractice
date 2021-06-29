@@ -57,8 +57,15 @@ public class LetterCombinationsOfaPhoneNumberTest {
         Assertions.assertEquals("b", actual2.get(1));
         Assertions.assertEquals("c", actual2.get(2));
 
-        List<String> actual3 = letterCombinations("");
-        Assertions.assertEquals(0, actual3.size());
+        List<String> actual3 = letterCombinations("7");
+        Assertions.assertEquals(4, actual3.size());
+        Assertions.assertEquals("p", actual3.get(0));
+        Assertions.assertEquals("q", actual3.get(1));
+        Assertions.assertEquals("r", actual3.get(2));
+        Assertions.assertEquals("s", actual3.get(3));
+
+        List<String> actual4 = letterCombinations("");
+        Assertions.assertEquals(0, actual4.size());
     }
 
     private List<String> letterCombinations(String digits) {
