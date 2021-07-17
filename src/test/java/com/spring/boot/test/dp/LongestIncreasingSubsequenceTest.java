@@ -42,28 +42,16 @@ import java.util.Map;
 */
 public class LongestIncreasingSubsequenceTest {
 
-    @Data
-    @AllArgsConstructor
-    private class TwoNum {
-
-        private int first;
-
-        private int second;
-    }
-
     @Test
     public void test() {
 
         int length1 = lengthOfLIS(new int[]{10,9,2,5,3,7,101,18});
-
         Assertions.assertEquals(4, length1);
 
         int length2 = lengthOfLIS(new int[]{0,1,0,3,2,3});
-
         Assertions.assertEquals(4, length2);
 
         int length3 = lengthOfLIS(new int[]{7,7,7,7,7,7,7});
-
         Assertions.assertEquals(1, length3);
 
     }
