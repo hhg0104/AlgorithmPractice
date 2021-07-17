@@ -70,20 +70,20 @@ public class LongestIncreasingSubsequenceTest {
 
     public int lengthOfLIS(int[] nums) {
 
-        int[] subsquenceArr = new int[nums.length];
-        Arrays.fill(subsquenceArr, 1);
+        int[] subsequenceArr = new int[nums.length];
+        Arrays.fill(subsequenceArr, 1);
 
         for (int i = 1; i < nums.length; i++) {
             for (int j = i - 1; j >= 0; j--) {
                 if (nums[i] > nums[j]) {
-                    subsquenceArr[i] = Math.max(subsquenceArr[j] + 1, subsquenceArr[i]);
+                    subsequenceArr[i] = Math.max(subsequenceArr[j] + 1, subsequenceArr[i]);
                 }
             }
         }
 
         int max = 0;
-        for (int subsquence : subsquenceArr) {
-            max = Math.max(subsquence, max);
+        for (int subsequence : subsequenceArr) {
+            max = Math.max(subsequence, max);
         }
 
         return max;
