@@ -37,7 +37,7 @@ import java.util.Map;
     0 <= s.length <= 5 * 104
     s consists of English letters, digits, symbols and spaces.
  */
-public class LogestSubStringTest {
+public class LongestSubStringTest {
 
     @Test
     public void testLongestSubstring() {
@@ -102,7 +102,8 @@ public class LogestSubStringTest {
         Map<Character, Integer> map = new HashMap<>(); // current index of character
 
         // try to extend the range [i, j]
-        for (int j = 0, i = 0; j < s.length(); j++) {
+        int i = 0;
+        for (int j = 0; j < s.length(); j++) {
 
             char ch = s.charAt(j);
             System.out.println(j + " : " + i + " : " + ch);
