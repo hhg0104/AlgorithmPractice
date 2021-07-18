@@ -40,8 +40,8 @@ import java.util.Arrays;
     text1 and text2 consist of only lowercase English characters.
 
 
-    Time Complexity: O(n^2)
-    Space Complexity: O(n)
+    Time Complexity: O(length of text1 * length of text2)
+    Space Complexity: O(length of text1 * length of text2)
 */
 public class LongestCommonSubsequenceTest {
 
