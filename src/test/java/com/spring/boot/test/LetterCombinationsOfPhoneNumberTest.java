@@ -33,8 +33,14 @@ import java.util.List;
 
     0 <= digits.length <= 4
     digits[i] is a digit in the range ['2', '9'].
+
+    Time complexity: O(3^N * 4^M)
+    Space complexity: O(3^N * 4^M)
+
+    where N is the number of digits in the input that maps to 3 letters and M is the number of digits in the input that
+    maps to 4 letters, N+M is the total number digits in the input.
  */
-public class LetterCombinationsOfaPhoneNumberTest {
+public class LetterCombinationsOfPhoneNumberTest {
 
     @Test
     public void test() {
@@ -76,12 +82,12 @@ public class LetterCombinationsOfaPhoneNumberTest {
         }
 
         String mapping[] = {"", "", "abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
-        addLetterCombination(list, digits, "", 0, mapping);
+        addLetterCombination(digits, mapping, "", 0, list);
 
         return list;
     }
 
-    private void addLetterCombination(List<String> list, String digits, String str, int idx, String[] mapping) {
+    private void addLetterCombination(String digits, String[] mapping, String str, int idx, List<String> list) {
 
         if (str.length() == digits.length()) {
             list.add(str);
@@ -91,7 +97,7 @@ public class LetterCombinationsOfaPhoneNumberTest {
         String buttonStr = mapping[digits.charAt(idx) - '0'];
 
         for (int i = 0; i < buttonStr.length(); i++) {
-            addLetterCombination(list, digits, str + buttonStr.charAt(i), idx + 1, mapping);
+            addLetterCombination(digits, mapping, str + buttonStr.charAt(i), idx + 1, list);
         }
     }
 }
