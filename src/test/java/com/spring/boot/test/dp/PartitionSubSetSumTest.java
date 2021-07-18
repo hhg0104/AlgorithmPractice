@@ -61,7 +61,7 @@ public class PartitionSubSetSumTest {
             return false;
         }
 
-        return canPartition(nums, 0, 0, total / 2, new HashMap<String, Boolean>());
+        return canPartition(nums, 0, 0, total / 2, new HashMap<>());
     }
 
     private boolean canPartition(int[] nums, int idx, int sum, int total, Map<String, Boolean> resultMap) {
