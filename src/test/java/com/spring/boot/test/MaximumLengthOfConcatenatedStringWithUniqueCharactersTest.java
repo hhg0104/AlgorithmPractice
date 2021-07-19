@@ -36,7 +36,7 @@ import java.util.List;
     arr[i] contains only lower case English letters.
 
     Time complexity: O(2^N)
-    Space complexity: O(2^N)
+    Space complexity: O(N)
  */
 public class MaximumLengthOfConcatenatedStringWithUniqueCharactersTest {
 
