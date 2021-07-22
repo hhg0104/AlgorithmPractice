@@ -1,4 +1,4 @@
-package com.spring.boot.test.LRUCacheTest;
+package com.spring.boot.test.LRUCache;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

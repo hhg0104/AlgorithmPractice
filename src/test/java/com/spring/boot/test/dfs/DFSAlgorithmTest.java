@@ -1,4 +1,4 @@
-package com.spring.boot.test;
+package com.spring.boot.test.dfs;
 
 import org.junit.jupiter.api.Test;
 

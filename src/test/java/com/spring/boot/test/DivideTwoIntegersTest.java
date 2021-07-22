@@ -50,6 +50,18 @@ public class DivideTwoIntegersTest {
 
         int actual1 = divide(-2147483648, 2);
         Assertions.assertEquals(-1073741824, actual1);
+
+        int actual2 = divide(10, 3);
+        Assertions.assertEquals(3, actual2);
+
+        int actual3 = divide(7, -3);
+        Assertions.assertEquals(-2, actual3);
+
+        int actual4 = divide(0, 1);
+        Assertions.assertEquals(0, actual4);
+
+        int actual5 = divide(1, 1);
+        Assertions.assertEquals(1, actual5);
     }
 
     public int divide(int dividend, int divisor) {

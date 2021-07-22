@@ -1,6 +1,5 @@
-package com.spring.boot.test;
+package com.spring.boot.test.linkedlist;
 
-import com.spring.boot.test.MergeTwoSortedListsTest.ListNode;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

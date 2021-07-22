@@ -1,4 +1,4 @@
-package com.spring.boot.test.LRUCacheTest;
+package com.spring.boot.test.LRUCache;
 
 import lombok.Data;
 

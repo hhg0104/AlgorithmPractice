@@ -1,4 +1,4 @@
-package com.spring.boot.test;
+package com.spring.boot.test.dp;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

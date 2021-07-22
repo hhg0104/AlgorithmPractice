@@ -74,17 +74,15 @@ public class PartitionSubSetSumTest {
         if (total == sum) {
             return true;
         }
-
         if (sum > total) {
             return false;
         }
-
         if (idx >= nums.length) {
             return false;
         }
 
-        boolean result = canPartition(nums, idx + 1, sum + nums[idx], total, resultMap) || canPartition(nums, idx + 1, sum, total, resultMap);
-
+        boolean result = canPartition(nums, idx + 1, sum + nums[idx], total, resultMap) ||
+                canPartition(nums, idx + 1, sum, total, resultMap);
         resultMap.put(key, result);
 
         return result;

@@ -4,7 +4,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 /*
-    Given a number N. Find the minimum number of operations required to reach N starting from 0. You have 2 operations available:
+    Given a number N. Find the minimum number of operations required to reach N starting from 0.
+    You have 2 operations available:
 
     Double the number
     Add one to the number

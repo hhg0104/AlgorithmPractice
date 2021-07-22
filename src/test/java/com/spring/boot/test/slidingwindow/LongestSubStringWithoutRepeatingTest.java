@@ -1,4 +1,4 @@
-package com.spring.boot.test;
+package com.spring.boot.test.slidingwindow;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -37,7 +37,7 @@ import java.util.Map;
     0 <= s.length <= 5 * 104
     s consists of English letters, digits, symbols and spaces.
  */
-public class LongestSubStringTest {
+public class LongestSubStringWithoutRepeatingTest {
 
     @Test
     public void testLongestSubstring() {
