@@ -70,17 +70,10 @@ public class LongestCommonSubsequenceTest {
 
         int[][] map = new int[length1 + 1][length2 + 1];
 
-        for (int i = 0; i <= length1; i++) {
-            for (int j = 0; j <= length2; j++) {
-                if (i == 0 || j == 0) {
-                    map[i][j] = 0;
-                    continue;
-                }
+        for (int i = 1; i < length1 + 1; i++) {
+            for (int j = 1; j < length2 + 1; j++) {
 
-                char ch1 = text1.charAt(i - 1);
-                char ch2 = text2.charAt(j - 1);
-
-                if (ch1 == ch2) {
+                if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
                     map[i][j] = map[i - 1][j - 1] + 1;
 
                 } else {
