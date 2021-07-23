@@ -73,35 +73,33 @@ public class RegularExpressionMatchingTest {
     }
 
     public boolean isMatch(String s, String p) {
-        Map<String, Boolean> memo = new HashMap<>();
-        return search(s, p, memo);
+        Map<String, Boolean> cacheMap = new HashMap<>();
+        return search(s, p, cacheMap);
     }
 
-    private boolean search(String s, String p, Map<String, Boolean> memo) {
-        String state = s + '-' + p;
-        if (memo.containsKey(state)) {
-            return memo.get(state);
+    private boolean search(String s, String p, Map<String, Boolean> cacheMap) {
+
+        String key = s + "-" + p;
+        if (cacheMap.containsKey(key)) {
+            return cacheMap.get(key);
         }
 
-        boolean ans = false;
-
         if (p.isEmpty()) {
-            ans = s.isEmpty();
+            return s.isEmpty();
+        }
+
+        boolean isFirstMatched = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
+        boolean ans = false;
+        if (p.length() >= 2 && p.charAt(1) == '*') {
+            ans = search(s, p.substring(2), cacheMap) || (isFirstMatched && search(s.substring(1), p, cacheMap));
 
         } else {
-            boolean firstMatch = !s.isEmpty() && (s.charAt(0) == p.charAt(0) || p.charAt(0) == '.');
-
-            if (p.length() >= 2 && p.charAt(1) == '*') {
-                ans =  search(s, p.substring(2), memo) || (firstMatch && search(s.substring(1), p, memo));
-
-            } else {
-                if (firstMatch) {
-                    ans =  search(s.substring(1), p.substring(1), memo);
-                }
+            if (isFirstMatched) {
+                ans = search(s.substring(1), p.substring(1), cacheMap);
             }
         }
 
-        memo.put(state, ans);
+        cacheMap.put(key, ans);
 
         return ans;
     }
