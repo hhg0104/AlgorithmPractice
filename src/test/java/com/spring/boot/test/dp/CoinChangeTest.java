@@ -43,6 +43,9 @@ import java.util.Arrays;
     1 <= coins.length <= 12
     1 <= coins[i] <= 231 - 1
     0 <= amount <= 104
+
+    Time Complexity: O(coins.length * amount)
+    Space Complexity: O(amount)
  */
 public class CoinChangeTest {
 
@@ -92,6 +95,6 @@ public class CoinChangeTest {
             }
         }
 
-        return coinCountCache[amount] > amount? -1 : coinCountCache[amount];
+        return coinCountCache[amount] > amount ? -1 : coinCountCache[amount];
     }
 }
