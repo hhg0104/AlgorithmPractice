@@ -33,8 +33,11 @@ import java.util.Set;
     1 <= nums.length <= 6
     -10 <= nums[i] <= 10
     All the integers of nums are unique.
+
+    Time Complexity: O(N!)
+    Space Complexity: O()
  */
-public class PermutationTest {
+public class StringPermutationTest {
 
     @Test
     public void test() {
