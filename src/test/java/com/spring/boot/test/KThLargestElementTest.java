@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-public class KThLargestElement {
+public class KThLargestElementTest {
 
     @Test
     public void test() {

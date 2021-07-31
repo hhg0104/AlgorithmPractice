@@ -32,13 +32,13 @@ public class LongestCommonPrefixTest {
     @Test
     public void test() {
 
-        String actual1 = longestCommonPrefix2(new String[]{"flower", "flow", "flight"});
+        String actual1 = longestCommonPrefix(new String[]{"flower", "flow", "flight"});
         Assertions.assertEquals("fl", actual1);
 
-        String actual2 = longestCommonPrefix2(new String[]{"dog", "racecar", "car"});
+        String actual2 = longestCommonPrefix(new String[]{"dog", "racecar", "car"});
         Assertions.assertEquals("", actual2);
 
-        String actual3 = longestCommonPrefix2(new String[]{"ab", "a"});
+        String actual3 = longestCommonPrefix(new String[]{"ab", "a"});
         Assertions.assertEquals("a", actual3);
     }
 
@@ -47,17 +47,18 @@ public class LongestCommonPrefixTest {
             return "";
         }
 
-        for (int i = 1; i < strs[0].length(); i++) {
-            while (strs[i].indexOf(strs[0]) != 0) {
-                strs[0] = strs[0].substring(0, strs[0].length() - 1);
+        String firstStr = strs[0];
+        for (int i = 1; i < strs.length; i++) {
+            while (strs[i].indexOf(firstStr) != 0) {
+                firstStr = firstStr.substring(0, firstStr.length() - 1);
             }
 
-            if (strs[0] == "") {
+            if (firstStr == "") {
                 break;
             }
         }
 
-        return strs[0];
+        return firstStr;
     }
 
     public String longestCommonPrefix2(String[] strs) {
@@ -72,11 +73,12 @@ public class LongestCommonPrefixTest {
             char ch = firstStr.charAt(idx);
             boolean isMatched = true;
             for (int i = 1; i < strs.length; i++) {
-                if (idx >= strs[i].length()) {
+                String str = strs[i];
+                if (idx >= str.length()) {
                     return sb.toString();
                 }
 
-                if (ch != strs[i].charAt(idx)) {
+                if (ch != str.charAt(idx)) {
                     isMatched = false;
                     break;
                 }
