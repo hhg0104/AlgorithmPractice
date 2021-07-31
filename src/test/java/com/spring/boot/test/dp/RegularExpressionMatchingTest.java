@@ -96,6 +96,8 @@ public class RegularExpressionMatchingTest {
         } else {
             if (isFirstMatched) {
                 ans = search(s.substring(1), p.substring(1), cacheMap);
+            } else {
+                return false;
             }
         }
 
