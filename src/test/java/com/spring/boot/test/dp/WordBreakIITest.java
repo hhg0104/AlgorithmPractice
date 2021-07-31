@@ -67,11 +67,11 @@ public class WordBreakIITest {
         }
 
         List<String> list = new ArrayList<>();
-        isBreakable(s, wordDict, list, "");
+        breakWord(s, wordDict, list, "");
         return list;
     }
 
-    private void isBreakable(String s, List<String> wordDict, List<String> list, String str) {
+    private void breakWord(String s, List<String> wordDict, List<String> list, String str) {
         if (s.length() == 0) {
             list.add(str.substring(1));
             return;
@@ -80,7 +80,7 @@ public class WordBreakIITest {
         for (int i = 0; i < s.length(); i++) {
             String sub = s.substring(0, i + 1);
             if (wordDict.contains(sub)){
-                isBreakable(s.substring(i + 1), wordDict, list, str + " " + sub);
+                breakWord(s.substring(i + 1), wordDict, list, str + " " + sub);
             }
         }
     }
