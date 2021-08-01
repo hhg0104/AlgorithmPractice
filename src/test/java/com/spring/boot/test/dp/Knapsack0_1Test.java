@@ -10,6 +10,9 @@ which represent values and weights associated with n items respectively.
 Also given an integer W which represents knapsack capacity,
 find out the maximum value subset of val[] such that sum of the weights of this subset is smaller than or equal to W.
 You cannot break an item, either pick the complete item or don’t pick it (0-1 property).
+
+    Time Complexity: O(length of weights * capacity)
+    Space Complexity: O(length of weights * capacity)
  */
 public class Knapsack0_1Test {
 
