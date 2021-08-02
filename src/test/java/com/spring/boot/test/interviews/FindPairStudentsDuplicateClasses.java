@@ -15,11 +15,12 @@ import java.util.Set;
     Time Complexity: O(length of name ^ 2)
     Space Complexity: O(size of pairClasses * 3)
  */
-public class FindPairDuplicateClasses {
+public class FindPairStudentsDuplicateClasses {
 
     @Test
     public void test() {
         String[][] pairClasses = new String[][]{
+                // {student name, class name}
                 {"58", "class1"},
                 {"91", "class4"},
                 {"91", "class5"},
@@ -28,6 +29,14 @@ public class FindPairDuplicateClasses {
                 {"58", "class5"},
                 {"78", "class3"}
         };
+
+        /*
+            expected output -> pair students: duplicate classes
+
+            58,91: class5,class4
+            58,78: class1
+            91,78:
+        */
 
         Map<String, List<String>> duplicatesClassMap = findPairClassMap(pairClasses);
         Iterator<Map.Entry<String, List<String>>> iter = duplicatesClassMap.entrySet().iterator();
