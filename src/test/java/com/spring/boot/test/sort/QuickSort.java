@@ -1,5 +1,6 @@
 package com.spring.boot.test.sort;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -11,9 +12,18 @@ public class QuickSort {
         int[] arr = { 10, 7, 8, 9, 1, 5 };
         int n = arr.length;
 
+        System.out.println("Before: " + Arrays.toString(arr));
         quickSort(arr, 0, n - 1);
-        System.out.println("Sorted array: ");
-        System.out.println(Arrays.toString(arr));
+        System.out.println("After: " + Arrays.toString(arr));
+
+        Assertions.assertEquals(6, arr.length);
+        Assertions.assertEquals(1, arr[0]);
+        Assertions.assertEquals(5, arr[1]);
+        Assertions.assertEquals(7, arr[2]);
+        Assertions.assertEquals(8, arr[3]);
+        Assertions.assertEquals(9, arr[4]);
+        Assertions.assertEquals(10, arr[5]);
+
     }
 
     private void quickSort(int[] arr, int start, int end) {
@@ -37,7 +47,7 @@ public class QuickSort {
             }
         }
         swap(arr, i + 1, end);
-        return (i + 1);
+        return i + 1;
     }
 
     private void swap(int[] arr, int idx1, int idx2) {
