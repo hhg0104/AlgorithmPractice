@@ -43,34 +43,28 @@ public class LongestSubStringWithoutRepeatingTest {
     public void testLongestSubstring() {
 
         String str1 = "abcabcbb";
-        int length1 = getLongestSubString2(str1);
-        System.out.println(length1);
-
+        int length1 = lengthOfLongestSubstring(str1);
         Assertions.assertEquals(length1, 3);
 
         String str2 = "bbbbb";
-        int length2 = getLongestSubString2(str2);
-        System.out.println(length2);
-
+        int length2 = lengthOfLongestSubstring(str2);
         Assertions.assertEquals(length2, 1);
 
         String str3 = "pwwkew";
-        int length3 = getLongestSubString2(str3);
-        System.out.println(length3);
-
+        int length3 = lengthOfLongestSubstring(str3);
         Assertions.assertEquals(length3, 3);
 
         String str4 = "";
-        int length4 = getLongestSubString2(str4);
-        System.out.println(length4);
-
+        int length4 = lengthOfLongestSubstring(str4);
         Assertions.assertEquals(length4, 0);
 
         String str5 = "가나다나가다나나";
-        int length5 = getLongestSubString2(str5);
-        System.out.println(length5);
-
+        int length5 = lengthOfLongestSubstring(str5);
         Assertions.assertEquals(length5, 3);
+
+        String str6 = " ";
+        int length6 = lengthOfLongestSubstring(str6);
+        Assertions.assertEquals(length6, 1);
     }
 
     private int getLongestSubString2(String str) {
@@ -98,28 +92,23 @@ public class LongestSubStringWithoutRepeatingTest {
     // o(2n)
     public int lengthOfLongestSubstring(String s) {
 
-        int ans = 0;
-        Map<Character, Integer> map = new HashMap<>(); // current index of character
-
-        // try to extend the range [i, j]
-        int i = 0;
-        for (int j = 0; j < s.length(); j++) {
-
-            char ch = s.charAt(j);
-            System.out.println(j + " : " + i + " : " + ch);
-
-            if (map.containsKey(ch)) {
-                i = Math.max(map.get(ch), i);
-            }
-            ans = Math.max(ans, j - i + 1);
-            System.out.println("ans: " + ans);
-            map.put(ch, j + 1);
+        if (s.length() <= 1) {
+            return s.length();
         }
 
-        System.out.println("-------------------");
-        map.forEach((key, value) -> System.out.println(key + " : " + value + " : "));
+        Map<Character, Integer> charMap = new HashMap<>();
+        int lastRepeatIdx = -1;
+        int maxLength = 0;
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (charMap.containsKey(ch)) {
+                lastRepeatIdx = Math.max(lastRepeatIdx, charMap.get(ch));
+            }
+            maxLength = Math.max(maxLength, i - lastRepeatIdx);
+            charMap.put(ch, i);
+        }
 
-        return ans;
+        return maxLength;
     }
 
     // o(2n)

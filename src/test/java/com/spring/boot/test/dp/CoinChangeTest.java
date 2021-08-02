@@ -52,11 +52,6 @@ public class CoinChangeTest {
     @Test
     public void test() {
 
-        String a = "abcdefghijklmnopqrstuvwxyz";
-        for (char c : a.toCharArray()) {
-            System.out.println(c - 'a');
-        }
-
         int actual1 = coinChange(new int[]{1, 2, 5}, 11);
         Assertions.assertEquals(3, actual1);
 

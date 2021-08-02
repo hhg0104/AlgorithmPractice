@@ -59,17 +59,17 @@ public class MissingNumberInArrayTest {
     private int findMissingNumber(int[] arr) {
 
 //        Gauss' Formula -> sum of nums 1 to n
-//        int maximumNum = arr.length * (arr.length + 1) / 2;
+//        int totalSum = arr.length * (arr.length + 1) / 2;
 
-        int maximumNum = (arr.length + 1) * (arr.length / 2);
+        int totalSum = (arr.length + 1) * (arr.length / 2);
         if (arr.length % 2 != 0) {
-            maximumNum += (arr.length / 2) + 1;
+            totalSum += (arr.length / 2) + 1;
         }
 
         for (int i = 0; i < arr.length; i++) {
-            maximumNum -= arr[i];
+            totalSum -= arr[i];
         }
 
-        return maximumNum;
+        return totalSum;
     }
 }

@@ -57,7 +57,7 @@ public class MergeMultipleSortedListTest {
             ListNode node3 = new ListNode(2);
             node3.next = new ListNode(6);
 
-            ListNode actual = mergeKLists(new ListNode[]{node1, node2, node3}, 2);
+            ListNode actual = mergeKLists(new ListNode[]{node1, node2, node3});
             Assertions.assertEquals(1, actual.val);
             Assertions.assertEquals(1, actual.next.val);
             Assertions.assertEquals(2, actual.next.next.val);

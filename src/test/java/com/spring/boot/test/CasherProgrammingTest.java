@@ -24,10 +24,18 @@ import java.util.stream.Collectors;
  * 'FIFTY': 50.00,
  * 'ONE HUNDRED': 100.00
  * The aim of the program is to calculate the change that has to be returned to the customer.
- * 입력:
- * Your program should read lines of text from standard input. Each line contains two numbers which are separated by a semicolon. The first is the Purchase price (PP) and the second is the cash(CH) given by the customer.
- * 출력:
- * For each line of input print a single line to standard output which is the change to be returned to the customer. In case the CH < PP, print out ERROR. If CH == PP, print out ZERO. For all other cases print the amount that needs to be returned, in terms of the currency values provided. The output should be alphabetically sorted.
+ *
+ * Input:
+ * Your program should read lines of text from standard input. Each line contains two numbers
+ * which are separated by a semicolon.
+ * The first is the Purchase price (PP) and the second is the cash(CH) given by the customer.
+ *
+ * Input:
+ * For each line of input print a single line to standard output
+ * which is the change to be returned to the customer.
+ * In case the CH < PP, print out ERROR. If CH == PP, print out ZERO.
+ * For all other cases print the amount that needs to be returned,
+ * in terms of the currency values provided. The output should be alphabetically sorted.
  */
 public class CasherProgrammingTest {
 

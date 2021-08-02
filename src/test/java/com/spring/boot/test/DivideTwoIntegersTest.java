@@ -13,8 +13,8 @@ import org.junit.jupiter.api.Test;
     For example, truncate(8.345) = 8 and truncate(-2.7335) = -2.
 
     Note: Assume we are dealing with an environment that could only store integers
-    within the 32-bit signed integer range: [−231, 231 − 1]. For this problem, assume that your function returns 231 − 1 when the division result overflows.
-
+    within the 32-bit signed integer range: [−231, 231 − 1]. For this problem,
+    assume that your function returns 231 − 1 when the division result overflows.
 
 
     Example 1:

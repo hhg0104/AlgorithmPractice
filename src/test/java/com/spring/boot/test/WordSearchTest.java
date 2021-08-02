@@ -122,20 +122,16 @@ public class WordSearchTest {
     private boolean dfs(char[][] board, String word, int boardIdx, int rowIdx, int wordIdx, boolean[][] visited) {
 
         if (wordIdx > word.length() - 1) {
-            System.out.println("Completed.");
             return true;
         }
 
-        System.out.println("boardIdx: " + boardIdx + ", rowIdx: " + rowIdx + ", word: " + word.charAt(wordIdx) + ", wordIdx: " + wordIdx);
 
         if (boardIdx < 0 || rowIdx < 0 ||
                 boardIdx >= board.length || rowIdx >= board[0].length ||
                 word.charAt(wordIdx) != board[boardIdx][rowIdx] || visited[boardIdx][rowIdx]) {
-            System.out.println("Failed.");
             return false;
 
         } else {
-            System.out.println("Passed.");
             visited[boardIdx][rowIdx] = true;
         }
 
@@ -143,11 +139,11 @@ public class WordSearchTest {
                 dfs(board, word, boardIdx, rowIdx + 1, wordIdx + 1, visited) ||
                 dfs(board, word, boardIdx + 1, rowIdx, wordIdx + 1, visited) ||
                 dfs(board, word, boardIdx, rowIdx - 1, wordIdx + 1, visited)) {
-
             return true;
-        }
 
-        visited[boardIdx][rowIdx] = false;
+        } else {
+            visited[boardIdx][rowIdx] = false;
+        }
 
         return false;
     }

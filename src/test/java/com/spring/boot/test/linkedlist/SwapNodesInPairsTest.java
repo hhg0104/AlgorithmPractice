@@ -85,7 +85,7 @@ public class SwapNodesInPairsTest {
         ListNode dummy = new ListNode(0);
         ListNode curr = dummy;
         curr.next = head;
-
+//dummy -> 1 -> 2 -> 3 -> 4
         while(curr != null && curr.next != null && curr.next.next != null) {
             ListNode next1 = curr.next;
             ListNode next2 = curr.next.next;

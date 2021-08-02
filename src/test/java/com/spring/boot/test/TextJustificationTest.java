@@ -146,20 +146,21 @@ public class TextJustificationTest {
 
         StringBuilder sb = new StringBuilder();
         int listSize = currentList.size();
-        int spaceCount = maxWidth - strLength;
+        int spaceLength = maxWidth - strLength;
         if (listSize == 1) {
-            return currentList.get(0) + addSpaces(spaceCount);
+            return currentList.get(0) + getSpaces(spaceLength);
         } else {
-            int eachSpaceCount = spaceCount / (listSize - 1);
+            int spaceCount = listSize - 1;
+            int eachSpaceLength = spaceLength / spaceCount;
             if (isLastLine) {
-                eachSpaceCount = 1;
+                eachSpaceLength = 1;
             }
-            int extraSpaceCount = spaceCount % (listSize - 1);
+            int extraSpaceCount = spaceLength % spaceCount;
             for (int i = 0; i < listSize; i++) {
                 String str = currentList.get(i);
                 sb.append(str);
-                if (i < listSize - 1) {
-                    sb.append(addSpaces(eachSpaceCount));
+                if (i < spaceCount) {
+                    sb.append(getSpaces(eachSpaceLength));
                     if (extraSpaceCount > 0 && !isLastLine) {
                         sb.append(" ");
                         extraSpaceCount--;
@@ -168,15 +169,15 @@ public class TextJustificationTest {
             }
 
             if (isLastLine) {
-                int spaceCountForLastLine = spaceCount - (listSize - 1);
-                sb.append(addSpaces(spaceCountForLastLine));
+                int spaceCountForLastLine = spaceLength - spaceCount;
+                sb.append(getSpaces(spaceCountForLastLine));
             }
         }
 
         return sb.toString();
     }
 
-    private String addSpaces(int spaceCount) {
+    private String getSpaces(int spaceCount) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < spaceCount; i++) {
             sb.append(" ");

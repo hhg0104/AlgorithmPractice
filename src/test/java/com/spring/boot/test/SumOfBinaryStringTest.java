@@ -38,10 +38,10 @@ public class SumOfBinaryStringTest {
             int sum = carry;
 
             if(idx1 >= 0) {
-                sum += ((binary1.charAt(idx1) == '1')? 1 : 0);
+                sum += binary1.charAt(idx1) - '0';
             }
             if(idx2 >= 0) {
-                sum += ((binary2.charAt(idx2) == '1')? 1 : 0);
+                sum += binary2.charAt(idx2) - '0';
             }
 
             carry = sum / 2;

@@ -27,7 +27,9 @@ import org.junit.jupiter.api.Test;
     1 + 2 = 3, 3 * 2 = 6, 6 + 1 = 7
 
     Your Task:
-    You don't need to read input or print anything. Your task is to complete the function minOperation() which accepts an integer N and return number of minimum operations required to reach N from 0.
+    You don't need to read input or print anything.
+    Your task is to complete the function minOperation()
+    which accepts an integer N and return number of minimum operations required to reach N from 0.
 
 
     Expected Time Complexity: O(LogN)
