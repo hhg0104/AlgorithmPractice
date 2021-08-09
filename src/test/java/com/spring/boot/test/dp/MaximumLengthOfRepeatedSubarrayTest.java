@@ -32,13 +32,13 @@ public class MaximumLengthOfRepeatedSubarrayTest {
     @Test
     public void test() {
 
-        int actual1 = findLengthFromFront(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4, 7});
+        int actual1 = findLengthFromBack(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4, 7});
         Assertions.assertEquals(3, actual1);
 
-        int actual2 = findLengthFromFront(new int[]{0, 0, 0, 0, 0}, new int[]{0, 0, 0, 0, 0});
+        int actual2 = findLengthFromBack(new int[]{0, 0, 0, 0, 0}, new int[]{0, 0, 0, 0, 0});
         Assertions.assertEquals(5, actual2);
 
-        int actual3 = findLengthFromFront(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4});
+        int actual3 = findLengthFromBack(new int[]{1, 2, 3, 2, 1}, new int[]{3, 2, 1, 4});
         Assertions.assertEquals(3, actual3);
     }
 
@@ -65,6 +65,7 @@ public class MaximumLengthOfRepeatedSubarrayTest {
             }
         }
 
+        // extra work for printing out the maximum subarray
         printRepeatedSubarray(maxIdx, ans, nums1);
 
         return ans;
@@ -94,11 +95,22 @@ public class MaximumLengthOfRepeatedSubarrayTest {
         }
 
         int ans = 0;
+        int maxIdx = 0;
         for (int i = 0; i < nums1.length + 1; i++) {
             for (int j = 0; j < nums2.length + 1; j++) {
-                ans = Math.max(numsArr[i][j], ans);
+                if (numsArr[i][j] > ans) {
+                    ans = numsArr[i][j];
+                    maxIdx = i;
+                }
             }
         }
+
+        // extra work for printing out the maximum subarray
+        List<String> ansList = new ArrayList<>();
+        for (int i = maxIdx; i < maxIdx + ans; i++) {
+            ansList.add(String.valueOf(nums1[i]));
+        }
+        System.out.println(String.join(",", ansList));
 
         return ans;
     }
