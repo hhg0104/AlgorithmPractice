@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
+import java.util.Stack;
 
 public class CheckBalancedBracketsInExpressionTest {
 
@@ -20,7 +21,7 @@ public class CheckBalancedBracketsInExpressionTest {
 
     private boolean isBalancedBrackets(String exp) {
 
-        Deque<Character> stack = new ArrayDeque<>();
+        Stack<Character> stack = new Stack<>();
 
         for (int i = 0; i < exp.length(); i++) {
 

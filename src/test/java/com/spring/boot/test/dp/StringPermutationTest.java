@@ -44,10 +44,11 @@ public class StringPermutationTest {
 
         List<List<Integer>> actual1 = permute(new int[]{1,2,3});
         for (List<Integer> list : actual1) {
+            StringBuilder sb = new StringBuilder();
             for (int num: list) {
-                System.out.print(num + " ");
+                sb.append(" " + num);
             }
-            System.out.println("");
+            System.out.println(sb.substring(1));
         }
     }
 

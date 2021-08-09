@@ -62,7 +62,7 @@ public class MaximumSubarrayTest {
         int ans = nums[0];
 
         for (int i = 1; i < nums.length; i++) {
-            sum[i] = Math.max(nums[i], sum [i - 1] + nums[i]);
+            sum[i] = Math.max(nums[i], sum[i - 1] + nums[i]);
             ans = Math.max(ans, sum[i]);
         }
 

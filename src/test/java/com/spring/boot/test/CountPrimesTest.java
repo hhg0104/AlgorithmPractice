@@ -48,10 +48,8 @@ public class CountPrimesTest {
             return 0;
         }
 
-        boolean[] primes = new boolean[n + 1];
-        for (int i = 2; i < n; i++) {
-            primes[i] = true;
-        }
+        boolean[] primes = new boolean[n];
+        Arrays.fill(primes, 2, primes.length, true);
 
         for (int i = 2; i * i < n; i++) {
             if (primes[i]) {
@@ -60,7 +58,6 @@ public class CountPrimesTest {
                 }
             }
         }
-
 
         int cnt = 0;
         for (int i = 2; i < primes.length; i++) {

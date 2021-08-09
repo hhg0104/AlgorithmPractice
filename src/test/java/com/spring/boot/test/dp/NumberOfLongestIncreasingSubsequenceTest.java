@@ -39,11 +39,11 @@ public class NumberOfLongestIncreasingSubsequenceTest {
     @Test
     public void test() {
 
-//        int length1 = findNumberOfLIS(new int[]{1, 3, 5, 4, 7});
-//        Assertions.assertEquals(2, length1);
-//
-//        int length2 = findNumberOfLIS(new int[]{2, 2, 2, 2, 2});
-//        Assertions.assertEquals(5, length2);
+        int length1 = findNumberOfLIS(new int[]{1, 3, 5, 4, 7});
+        Assertions.assertEquals(2, length1);
+
+        int length2 = findNumberOfLIS(new int[]{2, 2, 2, 2, 2});
+        Assertions.assertEquals(5, length2);
 
         int length3 = findNumberOfLIS(new int[]{5, 4, 7, 6, 10, 8});
         Assertions.assertEquals(8, length3);

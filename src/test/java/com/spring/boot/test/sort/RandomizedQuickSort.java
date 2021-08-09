@@ -42,16 +42,14 @@ public class RandomizedQuickSort {
 
     private void random(int[] nums, int start, int end) {
         int pivot = new Random().nextInt(end - start) + start;
-        int temp = nums[pivot];
-        nums[pivot] = nums[end];
-        nums[end] = temp;
+        swap(nums, pivot, end);
     }
 
     private int partition(int[] nums, int start, int end){
 
         int pivot  = nums[end];
         int i = start - 1;
-        for (int j = 0; j < end; j++) {
+        for (int j = start; j < end; j++) {
             if (nums[j] < pivot) {
                 i++;
                 swap(nums, i, j);

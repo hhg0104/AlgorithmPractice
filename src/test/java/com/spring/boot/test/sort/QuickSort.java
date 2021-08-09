@@ -46,11 +46,17 @@ public class QuickSort {
                 swap(arr, i, j);
             }
         }
-        swap(arr, i + 1, end);
-        return i + 1;
+
+        i++;
+        swap(arr, i, end);
+
+        return i;
     }
 
     private void swap(int[] arr, int idx1, int idx2) {
+        if (idx1 == idx2) {
+            return;
+        }
         int temp = arr[idx1];
         arr[idx1] = arr[idx2];
         arr[idx2] = temp;
