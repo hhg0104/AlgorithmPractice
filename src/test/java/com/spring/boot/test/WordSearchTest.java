@@ -130,10 +130,9 @@ public class WordSearchTest {
                 boardIdx >= board.length || rowIdx >= board[0].length ||
                 word.charAt(wordIdx) != board[boardIdx][rowIdx] || visited[boardIdx][rowIdx]) {
             return false;
-
-        } else {
-            visited[boardIdx][rowIdx] = true;
         }
+
+        visited[boardIdx][rowIdx] = true;
 
         if (dfs(board, word, boardIdx - 1, rowIdx, wordIdx + 1, visited) ||
                 dfs(board, word, boardIdx, rowIdx + 1, wordIdx + 1, visited) ||

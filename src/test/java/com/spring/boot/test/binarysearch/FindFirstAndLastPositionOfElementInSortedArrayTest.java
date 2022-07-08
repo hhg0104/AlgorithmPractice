@@ -56,10 +56,15 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
         Assertions.assertEquals(1, result3[0]);
         Assertions.assertEquals(1, result3[1]);
 
-        int[] result4 = searchRange(new int[]{}, 0);
+        int[] result4 = searchRange(new int[]{2, 2}, 1);
         Assertions.assertEquals(2, result4.length);
         Assertions.assertEquals(-1, result4[0]);
         Assertions.assertEquals(-1, result4[1]);
+
+        int[] result5 = searchRange(new int[]{}, 0);
+        Assertions.assertEquals(2, result5.length);
+        Assertions.assertEquals(-1, result5[0]);
+        Assertions.assertEquals(-1, result5[1]);
     }
 
     public int[] searchRange(int[] nums, int target) {
@@ -79,7 +84,11 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
 
     private int findFirst(int[] nums, int target, int start, int end) {
 
-        if (end - start == 0 && nums[start] != target) {
+        if (end < start) {
+            return -1;
+        }
+
+        if (end == start && nums[start] != target) {
             return -1;
         }
 
@@ -93,14 +102,18 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
                 return findFirst(nums, target, pivot + 1, end);
 
             } else {
-                return findFirst(nums, target, start, pivot);
+                return findFirst(nums, target, start, pivot - 1);
             }
         }
     }
 
     private int findLast(int[] nums, int target, int start, int end) {
 
-        if (end - start == 0 && nums[start] != target) {
+        if (end < start) {
+            return -1;
+        }
+
+        if (end == start && nums[start] != target) {
             return -1;
         }
 
@@ -111,7 +124,7 @@ public class FindFirstAndLastPositionOfElementInSortedArrayTest {
 
         } else {
             if (nums[pivot] > target) {
-                return findLast(nums, target, start, pivot);
+                return findLast(nums, target, start, pivot - 1);
 
             } else {
                 return findLast(nums, target, pivot + 1, end);

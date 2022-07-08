@@ -45,13 +45,13 @@ public class LongestIncreasingSubsequenceTest {
     @Test
     public void test() {
 
-        int length1 = lengthOfLIS(new int[]{10,9,2,5,3,7,101,18});
+        int length1 = lengthOfLIS2(new int[]{10,9,2,5,3,7,101,18});
         Assertions.assertEquals(4, length1);
 
         int length2 = lengthOfLIS(new int[]{0,1,0,3,2,3});
         Assertions.assertEquals(4, length2);
 
-        int length3 = lengthOfLIS(new int[]{7,7,7,7,7,7,7});
+        int length3 = lengthOfLIS2(new int[]{7,7,7,7,7,7,7});
         Assertions.assertEquals(1, length3);
 
     }
@@ -62,7 +62,7 @@ public class LongestIncreasingSubsequenceTest {
         Arrays.fill(subsequenceArr, 1);
 
         for (int i = 1; i < nums.length; i++) {
-            for (int j = i - 1; j >= 0; j--) {
+            for (int j = 0; j < i; j++) {
                 if (nums[i] > nums[j]) {
                     subsequenceArr[i] = Math.max(subsequenceArr[j] + 1, subsequenceArr[i]);
                 }
@@ -73,6 +73,38 @@ public class LongestIncreasingSubsequenceTest {
         for (int subsequence : subsequenceArr) {
             max = Math.max(subsequence, max);
         }
+
+        return max;
+    }
+    public int lengthOfLIS2(int[] arr) {
+
+        int n = arr.length;
+        int lis[] = new int[n];
+        int i, j, max = 0;
+
+        /* Initialize LIS values for all indexes */
+        for (i = 0; i < n; i++)
+            lis[i] = 1;
+
+        /* Compute optimized LIS values in
+           bottom up manner */
+        for (i = 1; i < n; i++) {
+            for (j = 0; j < i; j++) {
+                if (arr[i] > arr[j]) {
+//                    if (lis[i] < lis[j] + 1) {
+                        lis[i] = Math.max(lis[j] + 1, lis[i]);
+//                    } else {
+//                        System.out.println(i + " : " + j);
+//                        continue;
+//                    }
+                }
+            }
+        }
+
+        /* Pick maximum of all LIS values */
+        for (i = 0; i < n; i++)
+            if (max < lis[i])
+                max = lis[i];
 
         return max;
     }
